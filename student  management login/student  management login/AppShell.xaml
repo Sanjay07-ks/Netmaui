@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="student__management_login.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:student__management_login"
+    xmlns:view="clr-namespace:student__management_login.view"
+    Title="student__management_login">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate view:studenrview}"
+        Route="MainPage" />
+
+</Shell>

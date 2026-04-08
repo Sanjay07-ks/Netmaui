@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="student__management_login.view.studenrview"
+             Title="studenrview">
+    <VerticalStackLayout>
+        <Label Text="student login page"
+              FontSize="Medium"/>
+        <Entry Placeholder="Userid" Text="{Binding UserId} " Margin="30"/>
+        <Entry Placeholder="Password" Text="{Binding Password}" Margin="30"/>
+        <Button Text="Login" Command="{Binding LoginCommand}" Margin="30"/>
+    </VerticalStackLayout>
+</ContentPage>
