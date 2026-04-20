@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PersonalExpenseTracker.ViewModels"
+             x:Class="PersonalExpenseTracker.Views.HomePage"
+             Title="Dashboard"
+             BackgroundColor="{StaticResource AppBg}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0" Padding="20">
+
+            <!-- Title -->
+            <Label Text="My Wealth"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource AppText}"
+                   Margin="0,20,0,20"/>
+
+            <!-- Main Balance Card with Gradient-like design -->
+            <Border BackgroundColor="{StaticResource AppCard}"
+                    Stroke="{StaticResource AppCardBorder}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="24"
+                    Margin="0,0,0,30">
+                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                    
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="TOTAL EXPENSES"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           CharacterSpacing="1.5"
+                           TextColor="{StaticResource AppSubText}" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                           Text="{Binding TotalAmount, StringFormat='${0:N2}'}"
+                           FontSize="40"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource AppAccent}"
+                           Margin="0,10,0,10"/>
+
+                    <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Spacing="5" VerticalOptions="Center">
+                        <Border BackgroundColor="{StaticResource AppAccentLight}" StrokeShape="RoundRectangle 4" Padding="6,2">
+                            <Label Text="This Month" FontSize="10" TextColor="{StaticResource AppAccent}" FontAttributes="Bold" />
+                        </Border>
+                        <Label Text="{Binding TotalExpenses, StringFormat='{0} transactions'}"
+                               FontSize="12"
+                               TextColor="{StaticResource AppSubText}"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+
+            <!-- Quick Actions Grid -->
+            <Label Text="ACTIONS"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   CharacterSpacing="1.5"
+                   TextColor="{StaticResource AppSubText}"
+                   Margin="0,0,0,15"/>
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="120, 120" RowSpacing="15" ColumnSpacing="15">
+                
+                <!-- Add Expense -->
+                <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                        BackgroundColor="{StaticResource AppAccent}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20"
+                        Padding="20">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAddExpenseClicked"/>
+                    </Grid.GestureRecognizers>
+                    <VerticalStackLayout VerticalOptions="End" Spacing="5">
+                        <Border BackgroundColor="#FFFFFF" Opacity="0.2" StrokeThickness="0" StrokeShape="RoundRectangle 25" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" Margin="0,0,0,20">
+                            <Label Text="+" FontSize="28" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <Label Text="New" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                        <Label Text="Expense" FontSize="12" TextColor="#D1FAE5" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- View Expenses -->
+                <Border Grid.Row="0" Grid.Column="1"
+                        BackgroundColor="{StaticResource AppCard}"
+                        Stroke="{StaticResource AppCardBorder}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 20"
+                        Padding="15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnViewExpensesClicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid RowDefinitions="*,Auto" ColumnDefinitions="Auto,*">
+                        <Label Grid.Row="0" Grid.Column="0" Text="📋" FontSize="20" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="›" FontSize="20" TextColor="{StaticResource AppSubText}" HorizontalOptions="End" />
+                        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="History" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource AppText}" Margin="0,10,0,0"/>
+                    </Grid>
+                </Border>
+
+                <!-- Manage Categories -->
+                <Border Grid.Row="1" Grid.Column="1"
+                        BackgroundColor="{StaticResource AppCard}"
+                        Stroke="{StaticResource AppCardBorder}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 20"
+                        Padding="15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnManageCategoriesClicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid RowDefinitions="*,Auto" ColumnDefinitions="Auto,*">
+                        <Label Grid.Row="0" Grid.Column="0" Text="🗂️" FontSize="20" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="›" FontSize="20" TextColor="{StaticResource AppSubText}" HorizontalOptions="End" />
+                        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Categories" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource AppText}" Margin="0,10,0,0"/>
+                    </Grid>
+                </Border>
+
+            </Grid>
+            
+            <BoxView HeightRequest="40" Color="Transparent"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
